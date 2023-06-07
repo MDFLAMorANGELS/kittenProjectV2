@@ -9,6 +9,7 @@ gem "rails", "~> 7.0.5"
 ######
 gem 'devise'
 gem "table_print"
+gem 'faker'
 ######
 
 

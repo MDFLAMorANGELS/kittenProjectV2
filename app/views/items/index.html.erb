@@ -1,14 +1,50 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Items</h1>
+<main class="container container-xs-fluid">
+        <section>
+           <h2>Our cute Kitten</h2>
 
-<div id="items">
+<div id="items" class="d-flex flex-wrap justify-content-around">
   <% @items.each do |item| %>
-    <%= render item %>
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
+    <%= render "items/listCard",item: item %>
   <% end %>
 </div>
+        </section>
+        <section id="contact" class="py-5">
+            <div class="container">
+                <h2 class="mb-0">Any questions ?</h2>
+                <h3 class="fw-light fs-5">Contact us here</h3>
 
-<%= link_to "New item", new_item_path %>
+                <div class="row gy-4  d-flex align-items-center justify-content-between">
+                    <div class="col-12 col-md-5">
+                        <img src="https://www.zooplus.fr/magazine/wp-content/uploads/2018/02/fotolia_82719975-1.jpg" alt="Contact" width="100%">
+                    </div>
+                    <div class="col-12 offset-md-1 col-md-6">
+
+                        <!-- Formulaire -->
+                        <form class="row">
+                            <div class="col-12 my-2">
+                                <label for="email" class="form-label">Email address</label>
+                                <input name="email" type="email" class="form-control" id="email">
+                            </div>
+                            <div class="col-12 my-2">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea name="message" class="form-control" id="message" rows="3"></textarea>
+                            </div>
+                            <div class="col-12 my-2">
+                                <button type="submit" class="btn btn-primary w-100">Envoyer</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<% if user_signed_in? && current_user.role === 'admin' %>
+<ul><li>
+ <%= link_to "New item", new_item_path %>
+</li>
+</ul>
+<%end%>
