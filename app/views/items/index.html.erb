@@ -43,8 +43,9 @@
     </main>
 
 <% if user_signed_in? && current_user.role === 'admin' %>
-<ul><li>
- <%= link_to "New item", new_item_path %>
-</li>
+<ul>
+ <li>
+   <%= link_to "New item", new_item_path %>
+ </li>
 </ul>
 <%end%>
