@@ -8,6 +8,13 @@ module CartsHelper
       end
   end
 
+  def only_current_cart
+    if current_user != nil && current_user.cart.id != params[:id].to_i
+        return redirect_to cart_path(current_user.cart.id)
+    end
+  end
+
 end
 
 #require_login : S'il n’y a personne de connecté, rediriger la page vers la page de connexion
+#only_current_cart empêchera les personnes connectées de se rendre (via l’URL entre autres) sur un panier qui n’est pas le leur

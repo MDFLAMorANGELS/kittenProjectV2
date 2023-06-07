@@ -7,4 +7,13 @@
   <%= link_to "Back to items", items_path %>
 
   <%= button_to "Destroy this item", @item, method: :delete %>
+
+  <% if user_signed_in? %>
+      <%= form_for @join_table_item_cart do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.hidden_field :cart_id, value: current_user.cart.id %>
+          <button type="submit" class="btn btn-success">Ajouter au panier</button>
+      <% end %>
+  <% end %>
+
 </div>

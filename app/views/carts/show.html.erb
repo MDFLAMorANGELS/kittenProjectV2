@@ -28,6 +28,7 @@
                             <td><%= item.item.price %>€</td>
                             <td><%= total_item = item.item.price*item.quantity.to_d %>€</td>
                             <% total_price << total_item %>
+                            <td><%= link_to "Supprimer l'article", join_table_items_cart_path(item.id), method: :delete, class: "btn btn-danger", data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article du panier ?" } %></td>
                             </tr>
                         <% end %>
                          <tr>

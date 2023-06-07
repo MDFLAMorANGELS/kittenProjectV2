@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  include ItemsHelper
+  before_action :save_items_in_cart
 
   # GET /items or /items.json
   def index
@@ -9,6 +11,7 @@ class ItemsController < ApplicationController
   # GET /items/1 or /items/1.json
   def show
     @item = Item.find(params[:id])
+    @join_table_item_cart = JoinTableItemsCart.new
   end
 
   # GET /items/new

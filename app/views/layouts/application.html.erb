@@ -10,7 +10,18 @@
   </head>
 
   <body>
-  <%= link_to "Mon panier", cart_path(current_user.cart.id) if current_user %>
+    <%= link_to "Mon panier", cart_path(current_user.cart.id) if current_user %>
+    <% if @items_in_cart.count > 0 %>
+      <% total_items = []
+          @items_in_cart.each do |item_choosed|
+              item_quantity = item_choosed.quantity
+              total_items << item_quantity
+          end %>
+      <span class="badge badge-pill badge-info"><%= total_items.inject(0){|sum,x| sum + x }%></span>
+  <% else %>
+      <span class="badge badge-pill badge-info">0</span>
+  <% end %>
+   
     <%= yield %>
   </body>
 </html>
