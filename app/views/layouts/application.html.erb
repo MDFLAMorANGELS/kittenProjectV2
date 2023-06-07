@@ -10,6 +10,7 @@
   </head>
 
   <body>
+  <%= link_to "Mon panier", cart_path(current_user.cart.id) %>
     <%= yield %>
   </body>
 </html>
