@@ -94,6 +94,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     erubi (1.12.0)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
@@ -135,6 +139,8 @@ GEM
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.2-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.2-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
@@ -196,6 +202,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    stripe (8.5.0)
     table_print (1.5.7)
     thor (1.2.2)
     timeout (0.3.2)
@@ -226,6 +233,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-22
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -233,6 +241,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  dotenv-rails
   faker
   importmap-rails
   jbuilder
@@ -242,6 +251,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  stripe
   table_print
   turbo-rails
   tzinfo-data
