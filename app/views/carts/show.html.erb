@@ -25,8 +25,8 @@
                             <tr>
                             <th scope="row"><%= item.quantity %></th>
                             <td><%= item.item.title %></td>
-                            <td><%= add_zero(item.item.price) %>€</td>
-                            <td><%= total_item = add_zero(item.item.price*item.quantity.to_d) %>€</td>
+                            <td><%= item.item.price %>€</td>
+                            <td><%= total_item = item.item.price*item.quantity.to_d %>€</td>
                             <% total_price << total_item %>
                             <td><%= button_to "Destroy this item", join_table_items_cart_path(item.id), method: :delete, class: 'btn btn-danger' %>
                             </td>
