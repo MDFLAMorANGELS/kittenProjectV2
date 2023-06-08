@@ -4,7 +4,7 @@
         <div class="p-2 card-body d-flex flex-column align-items-around justify-content-between">
         <h5 class="card-title text-center"><%= item.title %></h5>
         <p class="card-text"> <%= item.description %></p>
-        <p class="card-text"> <%= item.price %></p>
+        <p class="card-text"> <%= add_zero(item.price) %> €</p>
         <%= link_to "Show this item", item,:class=>"btn btn-outline-primary justify-content-center align-items-center" %>
         </div>
     </div>

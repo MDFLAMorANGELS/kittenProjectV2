@@ -9,9 +9,12 @@ class JoinTableItemsCartsController < ApplicationController
   end
 
   def destroy
+    puts "$" *100
+    puts params[:id]
+    puts "$" *100
     @item_delete = JoinTableItemsCart.find(params[:id])
     @item_delete.destroy
-    redirect_to cart_path
+    redirect_to cart_path #(current_user.cart.id)
   end
 
   private

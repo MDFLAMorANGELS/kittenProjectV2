@@ -25,10 +25,11 @@
                             <tr>
                             <th scope="row"><%= item.quantity %></th>
                             <td><%= item.item.title %></td>
-                            <td><%= item.item.price %>€</td>
-                            <td><%= total_item = item.item.price*item.quantity.to_d %>€</td>
+                            <td><%= add_zero(item.item.price) %>€</td>
+                            <td><%= total_item = add_zero(item.item.price*item.quantity.to_d) %>€</td>
                             <% total_price << total_item %>
-                            <td><%= link_to 'Supprimer', join_table_items_cart_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cet article du panier ?' }, class: 'btn btn-danger' %></td>
+                            <td><%= button_to "Destroy this item", join_table_items_cart_path(item.id), method: :delete, class: 'btn btn-danger' %>
+                            </td>
                         <% end %>
                          <tr>
                             <th scope="row"></th>
@@ -48,5 +49,6 @@
             </div>
         </div>
 </div>
+
 <%# Ajoutez le prix selon quantité dans l’array vide : « <% total_price << total_item %>
 <%# additionne tout les prix présents à l’intérieur et j’affiche le résultat:  » <%= total_price.inject(0){|sum,x| sum + x }%>
