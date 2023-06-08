@@ -3,10 +3,13 @@
 <%= render @item %>
 
 <div>
-  <%= link_to "Edit this item", edit_item_path(@item) %> |
-  <%= link_to "Back to items", items_path %>
 
+</div>
+<% if user_signed_in? && current_user.role === 'admin' %>
+    <%= link_to "Edit this item", edit_item_path(@item) %> |
+    <%= link_to "Back to items", items_path %>
   <%= button_to "Destroy this item", @item, method: :delete %>
+<%end%>
 
   <% if user_signed_in? %>
       <%= form_for @join_table_item_cart do |f| %>
@@ -15,5 +18,3 @@
           <button type="submit" class="btn btn-success">Ajouter au panier</button>
       <% end %>
   <% end %>
-
-</div>

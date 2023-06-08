@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :check_admin_role, only: %i[edit update destroy]
   include ItemsHelper
   before_action :save_items_in_cart
 
@@ -71,5 +72,11 @@ class ItemsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def item_params
       params.require(:item).permit(:title, :description, :price, :image_url)
+    end
+
+    def check_admin_role
+      unless current_user && current_user.role == "admin"
+        redirect_to root_path, alert: "Vous n'avez pas les autorisations nécessaires pour accéder à cette page."
+      end
     end
 end
