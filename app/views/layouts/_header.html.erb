@@ -1,6 +1,6 @@
     <nav class="navbar navbar-expand-lg bg-light mb-5 fs-6 p-2" data-bs-theme="light">
             <div class="container-fluid">
-            <a class="navbar-brand fs-5" href="#">Kittenshop</a>
+            <a class="navbar-brand fs-5" href="<%= root_path %>">Kittenshop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -8,7 +8,7 @@
                 <div class="">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Home
+                            <a class="nav-link active" href="<%= root_path %>">Accueil
                             <span class="visually-hidden">(current)</span>
                             </a>
                         </li>
@@ -28,7 +28,7 @@
                         <%# bouton du panier %>
                           
                          
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">log out</a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Log out</a>
                             
                             <div class="dropdown-menu">
                             
@@ -37,7 +37,7 @@
                             
                             <li class="nav-item">
                              <a class="nav-link" href="<%= cart_path(current_user.cart.id) if current_user %>">
-                            <i class="fas fa-shopping-cart"></i> Basket
+                            <i class="fas fa-shopping-cart"></i>
                             <% if @items_in_cart && @items_in_cart.count > 0 %>
                               <% total_items = []
                                   @items_in_cart.each do |item_choosed|
@@ -54,8 +54,8 @@
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign in / Sign up</a>
                             <div class="dropdown-menu">
                                 <!-- Le contenu à afficher lorsque la session n'est pas active -->
-                                        <a class="dropdown-item" href="<%= new_user_session_path %>">Sign in</a>
-                                        <a class="dropdown-item" href="<%=  new_user_registration_path %>">Sign up</a> 
+                                        <a class="dropdown-item" href="<%= new_user_session_path %>">Se connecter</a>
+                                        <a class="dropdown-item" href="<%=  new_user_registration_path %>">Créer un compte</a> 
 
                                                     
                             <% end %>
