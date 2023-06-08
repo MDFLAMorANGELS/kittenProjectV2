@@ -1,5 +1,6 @@
 class JoinTableItemsCartsController < ApplicationController
 
+  
   def create
     @item_add = JoinTableItemsCart.add_or_create_cart_item_link(permit_link_params)
     redirect_to items_path
