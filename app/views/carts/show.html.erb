@@ -41,9 +41,10 @@
                             <td></td>
                             <td class="font-weight-bold">Prix total:</td>
                             <td><%= total_price.inject(0){|sum,x| sum + x }%>€</td>
-                            </tr>
+                         </tr>
                     </tbody>
                 </table>
+                <%= button_to "Payer", checkout_create_path(total: total_price.inject(0){|sum,x| sum + x }), class: "btn btn-primary center-button", data: {turbo: false} %>
             </div>
         </div>
 </div>
