@@ -24,10 +24,3 @@ body{
     padding: 0;
     height: 100%;
 }
-@media only screen and (min-width: 768px)  {
-    footer{
-        position:fixed;
-        bottom: 0;
-        width: 100%;
-    }
-}
