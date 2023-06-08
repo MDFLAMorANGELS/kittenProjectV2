@@ -26,4 +26,9 @@ footer{
     height: 0;
 }
 
+.custom-img-size {
+    width: 50%;
+    height: auto;
+  }
+  
 
