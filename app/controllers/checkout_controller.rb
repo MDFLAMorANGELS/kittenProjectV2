@@ -29,4 +29,7 @@ class CheckoutController < ApplicationController
     
     def cancel
     end
+
+    def process_payment
+    end
 end
