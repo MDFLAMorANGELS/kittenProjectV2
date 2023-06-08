@@ -20,22 +20,44 @@
                 <div>
                     <ul class="navbar-nav me-3">
                         <li class="nav-item ">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Basket</a>
+                          
+
                         </li>
                         <li class="nav-item dropdown">
                         <% if user_signed_in? %>
+                        <%# bouton du panier %>
+                          
+                         
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">log out</a>
+                            
                             <div class="dropdown-menu">
                             
                                 <!-- Le contenu à afficher lorsque la session est active -->
                                 <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-
+                            
+                            <li class="nav-item">
+                             <a class="nav-link" href="<%= cart_path(current_user.cart.id) if current_user %>">
+                            <i class="fas fa-shopping-cart"></i> Basket
+                            <% if @items_in_cart.count > 0 %>
+                              <% total_items = []
+                                  @items_in_cart.each do |item_choosed|
+                                      item_quantity = item_choosed.quantity
+                                      total_items << item_quantity
+                                  end %>
+                              <span class="badge badge-pill badge-info"><%= total_items.inject(0){|sum,x| sum + x }%></span>
+                            <% else %>
+                              <span class="badge badge-pill badge-info">0</span>
+                            <% end %>
+                          </a>
+                          </li>
                             <% else %>
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sign in / Sign up</a>
                             <div class="dropdown-menu">
                                 <!-- Le contenu à afficher lorsque la session n'est pas active -->
                                         <a class="dropdown-item" href="<%= new_user_session_path %>">Sign in</a>
-                                        <a class="dropdown-item" href="<%=  new_user_registration_path %>">Sign up</a>                                    
+                                        <a class="dropdown-item" href="<%=  new_user_registration_path %>">Sign up</a> 
+
+                                                    
                             <% end %>
                             </div>
                         </li>
@@ -43,4 +65,5 @@
                 </div>
             </div>
             </div>
+
         </nav> 
