@@ -1,15 +1,23 @@
-<div id="<%= dom_id item %>">
-
+<div id="<%= dom_id item %>" class="row">
+  <div class="col-md-6">
+    <%= image_tag item.image_url, class: 'img-thumbnail custom-img-size' %>
+  </div>
+  <div class="col-md-6">
     <strong>Title:</strong>
     <%= item.title %>
+    <p></p>
     <strong>Description:</strong>
     <%= item.description %>
+    <p></p>
     <strong>Price:</strong>
     <%= add_zero(item.price) %>
-  </p>
-
-  <p>
-    <%=image_tag item.image_url%>
-  </p>
-
+    <p></p>
+    <% if user_signed_in? %>
+      <%= form_for @join_table_item_cart do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.hidden_field :cart_id, value: current_user.cart.id %>
+        <button type="submit" class="btn btn-success">Ajouter au panier</button>
+      <% end %>
+    <% end %>
+  </div>
 </div>
