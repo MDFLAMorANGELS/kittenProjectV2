@@ -1,14 +1,19 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy ]
   before_action :check_admin_role, only: %i[edit update destroy]
+  include ItemsHelper
+  before_action :save_items_in_cart
 
   # GET /items or /items.json
   def index
     @items = Item.all
+    @join_table_item_cart = JoinTableItemsCart.new
   end
 
   # GET /items/1 or /items/1.json
   def show
+    @item = Item.find(params[:id])
+    
   end
 
   # GET /items/new
@@ -23,7 +28,7 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
-
+    
     respond_to do |format|
       if @item.save
         format.html { redirect_to item_url(@item), notice: "Item was successfully created." }

@@ -20,7 +20,20 @@
                 <div>
                     <ul class="navbar-nav me-3">
                         <li class="nav-item ">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Basket</a>
+                          <a class="nav-link" href="<%= cart_path(current_user.cart.id) if current_user %>">
+                            <i class="fas fa-shopping-cart"></i> Basket
+                            <% if @items_in_cart.count > 0 %>
+                              <% total_items = []
+                                  @items_in_cart.each do |item_choosed|
+                                      item_quantity = item_choosed.quantity
+                                      total_items << item_quantity
+                                  end %>
+                              <span class="badge badge-pill badge-info"><%= total_items.inject(0){|sum,x| sum + x }%></span>
+                            <% else %>
+                              <span class="badge badge-pill badge-info">0</span>
+                            <% end %>
+                          </a>
+
                         </li>
                         <li class="nav-item dropdown">
                         <% if user_signed_in? %>
@@ -43,4 +56,5 @@
                 </div>
             </div>
             </div>
+
         </nav> 
